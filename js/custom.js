@@ -1,20 +1,26 @@
-
 // palindrome function
 
+document.getElementById("check").addEventListener("click", function () {
 
-document.getElementById("check").addEventListener("click", function(){
-    let word = document.getElementById("input").value; 
-    for (let i = 0, len = word.length - 1; i < length / 2; i++) {
-    if (word[i] !== word[length - i]) {
-          document.getElementById('output').innerText= "sorry this is not a palindrome."
-    }
-    else  document.getElementById('output').innerText= "you have a palindrom!"
-    }
+    // get input
+    let word = document.getElementById("input").value;
+    let revWord = "";
     
-}); 
+    for (let i = word.length - 1; i >= 0; i--) {
+        let character = word.substr(i, 1);
+        revWord += character;
+    }
+    if (word == revWord) {
+        document.getElementById("output").innerText = `${word} is a Palindrome!` 
+    }
+    else {
+        document.getElementById("output").innerText = `${word} is a NOT a Palindrome!` 
+    }
+});
 
-document.getElementById("clear").addEventListener("clear", function(){
-    // Clear the word the user entered
-    document.getElementById("input").reset();  
- 
+// Clear the input and output
+document.getElementById("clear").addEventListener("click", function () {
+    
+    document.getElementById("input").value="";  
+    document.getElementById("output").innerText = "";
 });
